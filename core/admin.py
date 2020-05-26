@@ -5,6 +5,6 @@ from core.models import Event
 
 class EventAdmin(admin.ModelAdmin):
   list_display = ('title', 'event_date', 'datetimestamp') 
-  list_filter = ('title', 'event_date',)
+  list_filter = ('user', 'title', 'event_date',)
 
 admin.site.register(Event, EventAdmin)

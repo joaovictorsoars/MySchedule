@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Schedule</title>
+</head>
+<body>
+  <h1>Login</h1>
+
+  <div align="center">
+    <form action="submit" method="POST">{% csrf_token %}
+      <label>User</label>
+        <input type="text" name="username">
+      <label>Password</label>
+        <input type="text" name="password">
+      <button type="submit">Login</button>
+    </form>
+  </div>
+
+  <div align="center">
+  {% for message in messages %}
+    <strong>Error:</strong> {{ message }}
+  {% endfor %}
+  </div>
+</body>
+</html>
