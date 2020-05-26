@@ -4,7 +4,11 @@
   <h2>Agendamentos</h2>
   <ul>
   {% for event in events %}
-    <li>{{ event.title }} - {{ event.get_event_date }}</li>
+    <li>
+      {{ event.title }} - {{ event.get_event_date }}
+      (<a href="event?id={{ event.id }}">Edit</a> /
+      <a href="event/delete/{{ event.id }}">Remove</a>)
+    </li>
   {% endfor %}
   </ul>
   <a href="event/"><button type="button">Register</button></a>
