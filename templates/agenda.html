@@ -5,9 +5,13 @@
   <ul>
   {% for event in events %}
     <li>
-      {{ event.title }} - {{ event.get_event_date }}
-      (<a href="event?id={{ event.id }}">Edit</a> /
-      <a href="event/delete/{{ event.id }}">Remove</a>)
+      <div {% if event.get_delayed_event %}style=
+      "color:red"
+      {% endif %}>
+        {{ event.title }} - {{ event.get_event_date }}
+        (<a href="event?id={{ event.id }}">Edit</a> /
+        <a href="event/delete/{{ event.id }}">Remove</a>)
+      </div>
     </li>
   {% endfor %}
   </ul>

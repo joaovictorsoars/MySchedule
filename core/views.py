@@ -1,7 +1,11 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse
+from django.http.response import Http404
+from datetime import datetime, timedelta
 from core.models import Event
 
 
@@ -34,7 +38,8 @@ def logout_user(req):
 @login_required(login_url='/login/')
 def list_events(req):
   user = req.user
-  event = Event.objects.filter(user=user)
+  date_now = datetime.now() - timedelta(hours=1)
+  event = Event.objects.filter(user=user, event_date__gt=date_now)
   data = {'events': event}
   return render(req, 'agenda.html', data)
 
@@ -66,8 +71,21 @@ def submit_event(req):
 @login_required(login_url='/login/')
 def delete_event(req, id_event):
   user = req.user;
-  event = Event.objects.get(id=id_event)
+  try:
+    event = Event.objects.get(id=id_event)
+  except Exception:
+    raise Http404()
+  
   if user == event.user:
     event.delete()
+  else:
+    raise Http404()
 
   return redirect('/')
+
+@login_required(login_url='/login/')
+def list_events_json(req, user_id):
+  user = User.objects.get(id=user_id)
+  event = Event.objects.filter(user=user).values('id', 'title')
+
+  return JsonResponse(list(event), safe=False)
