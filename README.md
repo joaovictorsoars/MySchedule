@@ -12,7 +12,7 @@
 This project was developed with the following technologies:
 
 - [Python](https://python.org/)
-- [Django](https://django-project.org/)
+- [Django](https://djangoproject.com/)
 
 ## :memo: TODO
 
