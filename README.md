@@ -28,4 +28,4 @@ This project is under the [MIT license](LICENSE.md).
 
 ---
 
-<h4  align="center"> <em>&lt;/&gt;</em> with ❤️ and ☕ by <a  href="https://github.com/itsJoaoVictor"  target="_blank">João Victor</a> </h4>
+<h4  align="center"> <em>&lt;/&gt;</em> with ❤️ and ☕ by <a  href="https://github.com/joaovictorsoars"  target="_blank">João Victor</a> </h4>
